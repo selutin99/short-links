@@ -4,16 +4,16 @@ from marshmallow.validate import URL, Length
 from app import ma
 
 
-# Input schemas
+# Serialization schemas
 class CreateLinkSchema(ma.Schema):
     long_url = fields.Str(required=True, validate=URL(relative=False, require_tld=False))
 
 
 class RedirectInputSchema(ma.Schema):
-    short_postfix = fields.Str(required=True, validate=Length(equal=6))
+    short_postfix = fields.Str(validate=Length(equal=5))
 
 
-# Output schemas
+# Deserialization schemas
 class CreateLinkResponseSchema(ma.Schema):
     class Meta:
         fields = ("short_link",)

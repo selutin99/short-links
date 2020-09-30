@@ -1,7 +1,19 @@
-from flask import abort, make_response, jsonify, request
+from flask import abort, make_response, jsonify
+from marshmallow import ValidationError
 
 
-def validate_request(request, schema, status):
-    errors = schema.validate(request.json)
+def validate_request(request_part, schema, status, valid_req=True):
+    if valid_req:
+        errors = schema.validate(request_part)
+    else:
+        errors = schema
+
     if errors:
-        abort(make_response(jsonify(errors), status))
+        abort(make_response(jsonify(errors=errors), status))
+
+
+def preformat_request(load_dict, schema):
+    try:
+        schema.load(load_dict),
+    except ValidationError as e:
+        return e.messages
