@@ -8,6 +8,7 @@ class Link(db.Model):
 
     original_link = db.Column(db.String(255), nullable=False, unique=True)
     short_link = db.Column(db.String(255), nullable=False, unique=True)
+    short_postfix = db.Column(db.String(255), nullable=False, unique=True)
 
     counter = db.Column(db.Integer())
 
