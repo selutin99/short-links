@@ -9,7 +9,7 @@ def create_short_link(server_url, long_url):
 
     link = create_empty_link()
 
-    short_postfix = short_url.encode_url(link.id)
+    short_postfix = short_url.encode_url(link.id, min_length=5)
     short_link = server_url + short_postfix
 
     link = fill_empty_link(link.id, long_url, short_link, short_postfix)
