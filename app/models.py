@@ -14,4 +14,4 @@ class Link(db.Model):
     counter = db.Column(db.Integer(), default=0)
 
     def __repr__(self):
-        return "<{} - {}>".format(self.id, self.original_link)
+        return "<{}>".format(self.id)

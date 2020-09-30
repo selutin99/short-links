@@ -22,3 +22,7 @@ def fill_empty_link(id, long_url, short_url, short_postfix):
     db.session.commit()
 
     return link
+
+
+def link_exist(long_url):
+    return db.session.query(Link).filter(Link.long_url == long_url).first()

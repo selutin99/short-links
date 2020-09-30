@@ -1,10 +1,9 @@
 from app import ma
-from app.models import Link
 
 
 class LinkSchema(ma.Schema):
     class Meta:
-        model = Link
+        fields = ("long_url", "short_link", "short_postfix", "counter")
 
 
 link_schema = LinkSchema()
