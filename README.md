@@ -15,15 +15,32 @@
     pip install -r requirements.txt
 
 
-### Initializing the Database
+### Initialize the Database
        
     # Create DB
     python manage.py init_db
     # Migrate DB tables
     python manage.py db upgrade
 
+### Run the tests
 
-### Running the app
+    # Start the API validaing tests
+    python -m pytest
+
+
+### Run the app
 
     # Start the Flask development web server
     python manage.py runserver
+
+## Configuration
+You can set environment variables 
+to change configuration of application (or use default settings)  
+- SECRET_KEY - secret token of application
+- POSTGRES_URL - url of postgre server
+- POSTGRES_USER - user of postgre server
+- POSTGRES_PW - password of user
+- POSTGRES_DB - database of application in postgre
+- FLASK_ENV - environment of application. Possible values:
+   * config.DevelopmentConfig - config with enabled debug and CORS
+   * config.ProductionConfig - config with disabled debug
