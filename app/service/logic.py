@@ -3,7 +3,7 @@ import short_url
 from app.service.dao import create_empty_link, fill_empty_link, get_link, update_link_counter
 
 
-def create_short_link(server_url, long_url):
+def create_link_service(server_url, long_url):
     if get_link(long_url, is_long_url_filter=True):
         return get_link(long_url, is_long_url_filter=True)
 
@@ -17,8 +17,8 @@ def create_short_link(server_url, long_url):
     return link
 
 
-def get_original_link(short_postfix):
+def get_link_service(short_postfix, is_statistics=False):
     link = get_link(short_postfix, is_long_url_filter=False)
-    if link:
+    if not is_statistics and link:
         update_link_counter(link.id)
     return link

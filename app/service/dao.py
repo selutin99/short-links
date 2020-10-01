@@ -32,7 +32,7 @@ def get_link(predicate, is_long_url_filter=True):
 
 def update_link_counter(id):
     link = Link.query.get(id)
-    link.counter = link.counter + 1
+    link.count = link.count + 1
 
     db.session.add(link)
     db.session.commit()

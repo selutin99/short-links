@@ -11,7 +11,7 @@ class Link(db.Model):
     short_link = db.Column(db.String(255), nullable=True, unique=True)
     short_postfix = db.Column(db.String(255), nullable=True, unique=True)
 
-    counter = db.Column(db.Integer(), default=0)
+    count = db.Column(db.Integer(), default=0)
 
     def __repr__(self):
         return "<{}>".format(self.id)

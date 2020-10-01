@@ -23,8 +23,13 @@ class GetLinkResponseSchema(ma.Schema):
     long_url = fields.Str(required=True, validate=URL(relative=False, require_tld=False))
 
 
+class GetLinkStatistics(ma.Schema):
+    count = fields.Int(required=True)
+
+
 create_link_request_schema = CreateLinkRequestSchema()
 get_link_request_schema = GetLinkRequestSchema()
 
 create_link_response_schema = CreateLinkResponseSchema()
 get_link_response_schema = GetLinkResponseSchema()
+get_link_statistics_schema = GetLinkStatistics()
