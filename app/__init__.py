@@ -15,4 +15,6 @@ ma = Marshmallow(app)
 
 # initialize imports
 from app import models
+from app import swagger
+
 from app import routes

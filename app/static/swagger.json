@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "short-links service API via FLASK",
+    "version": "1.0.0",
+    "title": "short-links",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Short Link Requests",
+      "description": "Example API for short link request"
+    }
+  ],
+  "paths": {
+    "/long_to_short": {
+      "post": {
+        "tags": [
+          "Create Short Link Request"
+        ],
+        "summary": "Create a new short link",
+        "requestBody": {
+          "description": "Short Link Post Objects",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createShortLinkRequest"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/createShortLinkResponse"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad request data."
+          }
+        }
+      }
+    },
+    "/{short_postfix}": {
+      "parameters": [
+        {
+          "name": "short_postfix",
+          "in": "path",
+          "required": true,
+          "description": "Short postfix of the link that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Redirect to original URL"
+        ],
+        "summary": "Redirect to original url with given short postfix",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "short_postfix",
+            "required": true,
+            "description": "Short postfix",
+            "schema": {
+              "$ref": "#/components/schemas/short_postfix"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/bookRequest"
+            }
+          },
+          "400": {
+            "description": "Failed. Incorrect short postfix."
+          },
+          "404": {
+            "description": "Failed. Link by short postfix not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "short_postfix": {
+        "properties": {
+          "short_postfix": {
+            "type": "string"
+          }
+        }
+      },
+      "createShortLinkRequest": {
+        "type": "object",
+        "properties": {
+          "long_url": {
+            "type": "string",
+            "format": "url"
+          }
+        }
+      },
+      "createShortLinkResponse": {
+        "type": "object",
+        "properties": {
+          "short_link": {
+            "type": "string",
+            "format": "url"
+          }
+        }
+      }
+    }
+  }
+}
