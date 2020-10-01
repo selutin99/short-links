@@ -1,16 +1,10 @@
-version: '2.1'
+version: "3"
 services:
   postgres:
     restart: always
     image: postgres:10
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=75297529S
-      - POSTGRES_DB=short_links
-    volumes:
-      - ./postgres-data/postgres:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      POSTGRES_PASSWORD: postgres
   app:
     restart: always
     build: .
@@ -20,4 +14,5 @@ services:
       - .:/app
     depends_on:
       - postgres
-    entrypoint: ["python", "manage.py", "runserver"]
+    command:
+      bash -c "python manage.py init_db && python manage.py db upgrade && python manage.py runserver --host 0.0.0.0"

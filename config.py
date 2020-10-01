@@ -9,7 +9,7 @@ class BaseConfig:
     # Database config
     POSTGRES_URL = os.environ.get('POSTGRES_URL') or "127.0.0.1:5432"
     POSTGRES_USER = os.environ.get('POSTGRES_USER') or "postgres"
-    POSTGRES_PW = os.environ.get('POSTGRES_PW') or "75297529S"
+    POSTGRES_PW = os.environ.get('POSTGRES_PW') or "postgres"
     POSTGRES_DB = os.environ.get('POSTGRES_DB') or "short_links"
 
     DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER, pw=POSTGRES_PW,

@@ -6,6 +6,11 @@
 - SQLAlchemy v2.4.4
 - PostgreSQL v9.6.18
 
+## Docker installation
+
+    docker-compose build
+    docker-compose up -d
+ 
 ## Manual installation
 ### Initialize project environment
 
