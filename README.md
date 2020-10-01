@@ -10,7 +10,9 @@
 
     docker-compose build
     docker-compose up -d
- 
+
+Application will be available by address: 127.0.0.1:5000/
+
 ## Manual installation
 ### Initialize project environment
 
@@ -38,6 +40,8 @@
     # Start the Flask development web server
     python manage.py runserver
  
+Application will be available by address: 127.0.0.1:5000/ 
+
 ## Swagger
 After server starts you can move to swagger API description page by the next url
 
