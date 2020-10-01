@@ -15,4 +15,4 @@ ma = Marshmallow(app)
 
 # initialize imports
 from app import models
-from app import views
+from app import routes

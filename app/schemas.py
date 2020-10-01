@@ -5,11 +5,11 @@ from app import ma
 
 
 # Serialization schemas
-class CreateLinkSchema(ma.Schema):
+class CreateLinkRequestSchema(ma.Schema):
     long_url = fields.Str(required=True, validate=URL(relative=False, require_tld=False))
 
 
-class RedirectInputSchema(ma.Schema):
+class GetLinkRequestSchema(ma.Schema):
     short_postfix = fields.Str(validate=Length(equal=5))
 
 
@@ -19,7 +19,12 @@ class CreateLinkResponseSchema(ma.Schema):
         fields = ("short_link",)
 
 
-create_link_schema = CreateLinkSchema()
-redirect_link_schema = RedirectInputSchema()
+class GetLinkResponseSchema(ma.Schema):
+    long_url = fields.Str(required=True, validate=URL(relative=False, require_tld=False))
 
-create_link_output_schema = CreateLinkResponseSchema()
+
+create_link_request_schema = CreateLinkRequestSchema()
+get_link_request_schema = GetLinkRequestSchema()
+
+create_link_response_schema = CreateLinkResponseSchema()
+get_link_response_schema = GetLinkResponseSchema()
