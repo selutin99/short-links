@@ -2,6 +2,7 @@ import os
 
 
 class BaseConfig:
+    CORS_ENABLED = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or '9OLWxND4o83j4K4iuopO'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -18,6 +19,7 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
+    CORS_ENABLED = True
 
 
 class ProductionConfig(BaseConfig):

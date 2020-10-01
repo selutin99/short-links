@@ -84,8 +84,53 @@
           }
         ],
         "responses": {
+          "302": {
+            "description": "Redirect to original link successfully"
+          },
+          "400": {
+            "description": "Failed. Incorrect short postfix."
+          },
+          "404": {
+            "description": "Failed. Link by short postfix not found."
+          }
+        }
+      }
+    },
+    "/statistics/{short_postfix}": {
+      "parameters": [
+        {
+          "name": "short_postfix",
+          "in": "path",
+          "required": true,
+          "description": "Short postfix of the link that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Short Link Requests"
+        ],
+        "summary": "Get statistics of visits by short postfix",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "short_postfix",
+            "required": true,
+            "description": "Short postfix",
+            "schema": {
+              "$ref": "#/components/schemas/short_postfix"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/statistics"
+            }
           },
           "400": {
             "description": "Failed. Incorrect short postfix."
@@ -105,6 +150,16 @@
           "short_postfix": {
             "type": "string",
             "example": "ghpzy"
+          }
+        }
+      },
+      "statistics": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "int",
+            "format": "int",
+            "example": "14"
           }
         }
       },
