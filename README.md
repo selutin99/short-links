@@ -32,7 +32,12 @@
 
     # Start the Flask development web server
     python manage.py runserver
+ 
+## Swagger
+After server starts you can move to swagger API description page by the next url
 
+    <APP:HOST><APP:PORT>/swagger
+   
 ## Configuration
 You can set environment variables 
 to change configuration of application (or use default settings)  
