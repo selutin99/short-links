@@ -15,4 +15,4 @@ services:
     depends_on:
       - postgres
     command:
-      bash -c "python manage.py init_db && python manage.py db upgrade && python manage.py runserver --host 0.0.0.0"
+      bash -c "python manage.py runserver --host 0.0.0.0"

@@ -10,6 +10,11 @@
 
     docker-compose build
     docker-compose up -d
+    
+    # First start
+    docker-compose exec app python manage.py init_db
+    docker-compose exec app python manage.py db upgrade
+    docker-compose exec app python -m pytest
 
 Application will be available by address: 127.0.0.1:5000/
 
