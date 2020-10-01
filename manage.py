@@ -2,7 +2,7 @@ from flask_migrate import MigrateCommand
 from flask_script import Manager
 
 from app import app
-from service.commands.init_db import DatabaseInitializeCommand
+from app.service.commands.init_db import DatabaseInitializeCommand
 
 manager = Manager(app)
 
