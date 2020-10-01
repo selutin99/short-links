@@ -64,18 +64,22 @@
           "in": "path",
           "required": true,
           "description": "Short postfix of the link that we want to match",
-          "type": "string"
+          "type": "string",
+          "schema": {
+            "$ref": "#/components/schemas/short_postfix"
+          }
         }
       ],
       "get": {
         "tags": [
           "Short Link Requests"
         ],
-        "summary": "Redirect to original url with given short postfix",
+        "summary": "Redirect to original url with given short postfix. Please use external services to get successful redirect response",
         "parameters": [
           {
             "in": "path",
             "name": "short_postfix",
+            "example": "ghpzy",
             "required": true,
             "description": "Short postfix",
             "schema": {
@@ -85,7 +89,7 @@
         ],
         "responses": {
           "302": {
-            "description": "Redirect to original link successfully"
+            "description": "Redirect to original link successfully. Use external services to get this response code. Do not use Swagger"
           },
           "400": {
             "description": "Failed. Incorrect short postfix."
@@ -116,6 +120,7 @@
             "in": "path",
             "name": "short_postfix",
             "required": true,
+            "example": "ghpzy",
             "description": "Short postfix",
             "schema": {
               "$ref": "#/components/schemas/short_postfix"
@@ -142,7 +147,6 @@
       }
     }
   },
-
   "components": {
     "schemas": {
       "short_postfix": {
