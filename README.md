@@ -2,6 +2,7 @@
  Web application providing API for short links service
 
 ### Technology stack
+- Python 3.6.12
 - Flask v1.1.2
 - SQLAlchemy v2.4.4
 - PostgreSQL v9.6.18
@@ -21,6 +22,7 @@ Application will be available by address: 127.0.0.1:5000/
 ## Manual installation
 ### Initialize project environment
 
+    pip install virtualenv
     virtualenv venv
     For Windows: CALL venv/Scripts/activate
     For Linux: source venv/bin/activate
